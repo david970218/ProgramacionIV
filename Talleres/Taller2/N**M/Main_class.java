@@ -25,9 +25,9 @@ public class Main_class {
         for (int i = 1; i <= m; i++) {
             System.out.print(N);
             if(i<m)
-                System.out.print(" + ");
+                System.out.print(" * ");
             }
-        System.out.println(" = "+ N*m);
+        System.out.println(" = "+ (int) Math.pow(N,m));
     }
     
 }
