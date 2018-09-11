@@ -19,7 +19,7 @@ public class Disco extends Multimedia {
 
     @Override
     public String toString() {
-        return "Disco{\n" + super.toString() + "Genero=  " + genero + '}';
+        return "Disco{\n" + super.toString() + "Genero:          " + genero + "\n}\n";
     }
     
     
