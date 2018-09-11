@@ -25,7 +25,7 @@ public class Pelicula extends Multimedia {
     if(actrizPrincipal == null)
         return "Pelicula{\n" + super.toString() + "Actor Principal: " + actorPrincipal + "\n}\n";
     else
-        return "Pelicula{\n" + super.toString() +  "Actris Principal: "+ actrizPrincipal + "\n}\n";
+        return "Pelicula{\n" + super.toString() +  "Actriz Principal: "+ actrizPrincipal + "\n}\n";
 }
     
 }
