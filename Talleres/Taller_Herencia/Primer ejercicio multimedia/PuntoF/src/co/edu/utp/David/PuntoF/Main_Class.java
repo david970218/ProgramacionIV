@@ -27,6 +27,9 @@ public class Main_Class {
         //***************************************************************
         for (int i = 0; i < lista.Size(); i++)
             System.out.println(lista.get(i));
+        Multimedia a;
+        a = new Disco("Survival","Muse");
+        System.out.println(a.equals(lista.get(2)));
     }
     
 }
