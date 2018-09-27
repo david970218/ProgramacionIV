@@ -24,12 +24,15 @@ public class ListaMultimedia {
     
    public  boolean add(Multimedia m){
        if(numero_elementos >= tamaño)
+       {
            System.err.println("no se pueden agregar mas elementos a la lista");
+           return false;
+       }
        else{
            milista[numero_elementos] = m;
            numero_elementos+=1;
        }
-       return (numero_elementos == tamaño);
+       return (true);
    } 
     public Multimedia get(int posicion)
     {
