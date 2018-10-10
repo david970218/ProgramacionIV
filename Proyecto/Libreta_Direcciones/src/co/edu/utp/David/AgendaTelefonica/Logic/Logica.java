@@ -25,9 +25,13 @@ public class Logica {
     Cantidad_Telefonos = 5;
     public Logica(){
        frame = new FFormulario();
-       frame.setVisible(true);
        setActions();
     }
+    
+    public void iniciarPrograma(){
+        frame.setVisible(true);
+    }
+    
     
     public static void setBusqueda(BusquedaContactos a){
         Logica.search = a;

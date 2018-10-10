@@ -237,7 +237,7 @@ public class PFormularioEntrada extends JPanel {
         protected void plusActionPerformed(ActionEvent evt){
             if(numerotelefonicotf[contadortel].getText().equals("")){
                 Toolkit.getDefaultToolkit().beep();
-                JOptionPane.showMessageDialog(this,"Para agregar mas numeros telefonicos primero debe agregar un numero telefonico en el campo Numero Telefonico " 
+                JOptionPane.showMessageDialog(this,"Primero debe agregar un numero telefonico en el campo Numero Telefonico " 
                 + contadortel,"Error",JOptionPane.ERROR_MESSAGE);
             }
             else{
