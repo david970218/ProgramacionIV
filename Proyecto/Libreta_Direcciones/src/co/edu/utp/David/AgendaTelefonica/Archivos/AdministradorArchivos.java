@@ -16,10 +16,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author David
@@ -33,7 +33,9 @@ public class AdministradorArchivos {
          try{
          fos = new FileOutputStream(archivo,true);
             moos = new ObjectOutputStream(fos);
+            moos.reset();
             moos.writeUnshared(c);
+            moos.reset();
             moos.close();
         } catch (IOException ex) {}
             
@@ -45,9 +47,9 @@ public class AdministradorArchivos {
         try{
          fos = new FileOutputStream(archivo,true);
             moos = new MiObjectOutputStream(fos);
-            
+            moos.reset();
             moos.writeUnshared(c);
-            
+            moos.reset();
             moos.close();
           
         } catch (IOException ex) {}
@@ -60,6 +62,7 @@ public class AdministradorArchivos {
     public static Contacto[] leerArchivoSerializable(File archivo){
         FileInputStream fis;
         Object[] c = new Contacto[10000];
+        Object d;
         ObjectInputStream ois = null;
         if( archivo.exists() && archivo.length() != 0 ){
         try{
@@ -69,8 +72,9 @@ public class AdministradorArchivos {
             
             while(true){
          
-            c[a] = ois.readObject();
-                System.out.println(c[a]);
+            d = ois.readObject();
+            c[a] = d;
+
              a++;
                 
             }
@@ -123,7 +127,6 @@ public class AdministradorArchivos {
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
             while((aux = br.readLine()) != null){
-                System.out.println(aux);
                 objs[a] = aux;
                 a++;
             }
@@ -139,16 +142,19 @@ public class AdministradorArchivos {
    
    public static boolean exportarContactos(File serializable,File txt) throws IOException{
        LimpiarArchivo(txt);
+       int contador = 0;
        if(serializable.exists()){
            
            Contacto[] aux ;
            aux = leerArchivoSerializable(serializable);
-           System.out.println();
            int a =1;
            while(aux[a] != null){
+               contador ++;
                llenarArchivoTxt(txt,aux[a]);
                a++;
            }
+                JOptionPane.showMessageDialog(null,"Total contactos exportados " + contador, 
+                   "Contactos Exportados",  JOptionPane.INFORMATION_MESSAGE);
            return true;
        }
        return false;
@@ -156,18 +162,27 @@ public class AdministradorArchivos {
    
    public static boolean importarContactos(File serializable,File txt){
        if(txt.exists()){
+           int total = 0,impor= 0,negados = 0;
            String[] aux;
            aux = leerArchivoTxt(txt);
-           System.out.println();
            int a =1;
            while(aux[a] != null){
                String[][] creator;
                creator = convertirAStrings(aux[a].toCharArray());
                Contacto cntct;
                cntct = new Contacto(creator[1],creator[2],creator[3]);
-               System.out.println(cntct.guardarContacto());
+               if(cntct.guardarContacto()){
+                   impor +=1;
+                   total += 1;
+               }else{
+                   negados +=1;
+                   total ++;
+               }
                a++;
            }
+           JOptionPane.showMessageDialog(null,"Total contactos diponibles " + total + 
+                   "\nContactos importados " + impor + "\nContactos no importados " + negados , 
+                   "Contactos Importados",  JOptionPane.INFORMATION_MESSAGE);
            return true;
        }
        return false;

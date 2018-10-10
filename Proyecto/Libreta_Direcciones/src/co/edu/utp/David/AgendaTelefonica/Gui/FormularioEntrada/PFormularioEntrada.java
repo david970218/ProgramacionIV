@@ -9,10 +9,14 @@ import co.edu.utp.David.AgendaTelefonica.Gui.PBotonesE;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Arrays;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -28,23 +32,68 @@ public class PFormularioEntrada extends JPanel {
         int contadortel;
         private ComboBoxT[] cbt;
         private PBotonesE pbotones;        
-        final private JLabel[] numerotelefonico,vacios;
+        final private JLabel[] numerotelefonico;
         final private JTextField[] numerotelefonicotf;
         private JLabel nombre,primerapellido,segundoapellido,correoelectronico,direccion,alias;
         private JTextField nombretf,primerapellidotf,segundoapellidotf,correoelectronicotf,direcciontf,aliastf;
 
-    public PBotonesE getPbotones() {
-        return pbotones;
+    public PBotonesE getPbotones() {return pbotones;}
+    public int getContadortel() {return contadortel;}
+    public JTextField[] getNumerotelefonicotf() {return numerotelefonicotf;}
+    public JTextField getNombretf() {return nombretf;}
+    public JTextField getPrimerapellidotf(){return primerapellidotf;}
+    public JTextField getSegundoapellidotf() {return segundoapellidotf;}
+    public JTextField getCorreoelectronicotf() {return correoelectronicotf;}
+    public JTextField getDirecciontf() {return direcciontf;}
+    public JTextField getAliastf() {return aliastf;}
+    public JButton getPlusButton(){return plus;}
+    public JComboBox getJcb(int a){return cbt[a];}
+    public void setContadortel() {
+        contadortel += 1;
+        if(contadortel > 5) 
+            setContadorOne();}
+    public void setContadorOne(){contadortel = 1;}
+    
+    public void setSelectedItem(String a){
+        switch(a){
+            case "Movil":
+                cbt[contadortel].setSelectedIndex(1);
+                break;
+            case "Trabajo":
+                cbt[contadortel].setSelectedIndex(2);
+                break;
+            case "Casa":
+                cbt[contadortel].setSelectedIndex(3);
+                break;
+            case "Principal":
+                cbt[contadortel].setSelectedIndex(4);
+                break;
+            case "Fax del trabajo":
+                cbt[contadortel].setSelectedIndex(5);
+                break;
+            case "Fax de casa":
+                cbt[contadortel].setSelectedIndex(7);
+                break;
+            default:
+                cbt[contadortel].addItem(a);
+                cbt[contadortel].setSelectedIndex(8);
+                break;
+        }
     }
+    
         public PFormularioEntrada(){
                 super();
                 contadortel = 1; 
-                vacios = new JLabel[6];
                 cbt = new ComboBoxT[6];
-               
                 numerotelefonico = new JLabel[6];
                 numerotelefonicotf = new JTextField[6];
                 initGui();   
+        }
+        
+        private void keyTiped(KeyEvent evt){
+            if(numerotelefonicotf[contadortel].getText().length() >= 10){
+                evt.consume();
+            }
         }
 
         private void initGui(){
@@ -59,10 +108,8 @@ public class PFormularioEntrada extends JPanel {
         private void cbtActionPerformed(ActionEvent evt , int aux){
                   if(cbt[aux].getSelectedItem().equals("Otro")){
                         String otro = JOptionPane.showInputDialog("Nombre del Campo Personalizado");
-                        if(otro != null || !otro.equals(""))
-                            cbt[aux].addItem(otro);
-                       
-                        
+                        if(otro != null && !otro.equals(""))
+                            cbt[aux].addItem(otro);  
                         cbt[aux].setSelectedIndex(0);
                   }
         }
@@ -74,8 +121,23 @@ public class PFormularioEntrada extends JPanel {
                                 cbtActionPerformed(evt, contadortel);
                          }
         });
-        }
+          numerotelefonicotf[contadortel].addKeyListener(new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        keyTiped(e);
+                    }
 
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                       
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                            
+                    }
+                });
+        }       
         public void setAction(){
             
                 pbotones.getLimpiar().addActionListener(new ActionListener(){
@@ -98,7 +160,7 @@ public class PFormularioEntrada extends JPanel {
                 });
         }
 
-        private void minusActionPerformed(ActionEvent evt){
+        protected void minusActionPerformed(ActionEvent evt){
                   if(contadortel > 1){
                        if(!numerotelefonicotf[contadortel].getText().equals("")){
                             int action;
@@ -113,7 +175,7 @@ public class PFormularioEntrada extends JPanel {
                 }
         }
 
-         private void minusActionPerformedAux()
+         protected void minusActionPerformedAux()
          {
              remove(numerotelefonico[contadortel]);
             numerotelefonico[contadortel] = null;
@@ -137,24 +199,24 @@ public class PFormularioEntrada extends JPanel {
                 direcciontf.setText("");
                 correoelectronicotf.setText("");
                 numerotelefonicotf[1].setText("");          
-                 numerotelefonicotf[1].setEditable(true);
-                 cbt[1].setSelectedIndex(0);
+                numerotelefonicotf[1].setEditable(true);
+                cbt[1].setSelectedIndex(0);
                 //*********************************************************************************************************************************
                 //En estas lineas se eliminan todos los campos Numero telefonicos Creados con el boton plus 
                 //para dejar solo el primero creado por defecto  
                 int a = 2;
                 while(a <= 5){
-                        if(numerotelefonico[a] == null )
-                                break;
-                        else{
-                                remove(cbt[a]);
-                                cbt[a]=null;
-                                remove(numerotelefonico[a]);
-                                numerotelefonico[a] = null;
-                                remove(numerotelefonicotf[a]);
-                                numerotelefonicotf[a] = null;
+                    if(numerotelefonico[a] == null )
+                            break;
+                    else{
+                            remove(cbt[a]);                                
+                            cbt[a]=null;
+                            remove(numerotelefonico[a]);
+                            numerotelefonico[a] = null;
+                            remove(numerotelefonicotf[a]);
+                            numerotelefonicotf[a] = null;
                           }
-                          a+=1;
+                          a++;
                 }
                 //**********************************************************************************************************************************
                 //se reinicia el contador de numeros telefonicos a 1 para volver a crear si es necesario mas campos numeros telefonicos
@@ -172,8 +234,9 @@ public class PFormularioEntrada extends JPanel {
          * */
 
 
-        private void plusActionPerformed(ActionEvent evt){
+        protected void plusActionPerformed(ActionEvent evt){
             if(numerotelefonicotf[contadortel].getText().equals("")){
+                Toolkit.getDefaultToolkit().beep();
                 JOptionPane.showMessageDialog(this,"Para agregar mas numeros telefonicos primero debe agregar un numero telefonico en el campo Numero Telefonico " 
                 + contadortel,"Error",JOptionPane.ERROR_MESSAGE);
             }
@@ -271,12 +334,14 @@ public class PFormularioEntrada extends JPanel {
           * las funciones CrearcampoTel  Y crearPlus estan a parte de todas las funciones por si se necesita crear mas 
           * campos del mismo tipo
           */ 
-         private void crearCampoTel(){
+        public void crearCampoTel(){
         {
-                cbt[contadortel] = new ComboBoxT();
+               if(contadortel > 1)
+                   numerotelefonicotf[contadortel-1].setEditable(false);
+               cbt[contadortel] = new ComboBoxT();
                numerotelefonico[contadortel] = new JLabel();
                numerotelefonico[contadortel].setText("Numero Telefonico " + contadortel);
-                cambiarColor(numerotelefonico[contadortel]);
+               cambiarColor(numerotelefonico[contadortel]);
                add(numerotelefonico[contadortel]);
                add(cbt[contadortel]);
                numerotelefonicotf[contadortel] = new JTextField();
@@ -284,13 +349,13 @@ public class PFormularioEntrada extends JPanel {
                cbtAction();
            }
          }
-        private void borrarBotones(){
+        public void borrarBotones(){
              remove(plus);
              remove(minus);
              remove(pbotones);
          }
 
-        private void colocarBotones(){
+        public void colocarBotones(){
                 add(plus);
                 add(minus);
                 add(pbotones);
@@ -333,7 +398,8 @@ public class PFormularioEntrada extends JPanel {
             }
             {
                 for (int i = 1; i <= 5; i++) {
-                    if(numerotelefonicotf[i] == null || numerotelefonicotf[i].getText().equals("") )
+                    if(numerotelefonicotf[i] == null || 
+                       numerotelefonicotf[i].getText().equals(""))
                         break;
                     
                     else
@@ -346,6 +412,13 @@ public class PFormularioEntrada extends JPanel {
             return componentes;
          }
     
+    public JTextField getCampoTelefonico(int a){
+        if(a != 0 && a <= 5)
+            return numerotelefonicotf[a];
+        else
+            return null;
+    }
+         
     public boolean isContact(){
         return (!(numerotelefonicotf[1].getText().equals("")) && 
                 !(nombretf.getText().equals("")));

@@ -31,7 +31,7 @@ public class PBotonesE extends JPanel{
                 setActions();
                 agregarBoton(agregar,"Crear_contacto");
                 agregarBoton(limpiar,"Limpiar");
-                agregarBoton(salir,"Salir");
+                agregarBoton(salir,"Cerrar");
         }
 
 
@@ -45,16 +45,12 @@ public class PBotonesE extends JPanel{
                 agregar = new JButton();    
                 limpiar = new JButton();
                 salir = new JButton();
-                salir.addActionListener(new ActionListener(){
-                        @Override
-                        public void actionPerformed(ActionEvent evt){
-                                salirActionPerformed(evt);
-                        }
-                });
+                
+                
         }
 
-        private void salirActionPerformed(ActionEvent evt){
-                System.exit(0);
+        public JButton getSalir(){
+            return salir;
         }
 
         public JButton getAgregar() {

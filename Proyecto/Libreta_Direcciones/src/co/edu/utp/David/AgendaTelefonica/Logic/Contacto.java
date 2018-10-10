@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author David
@@ -40,7 +38,7 @@ public class Contacto implements Serializable {
     public void setDireccion(String direccion) {this.direccion = direccion;}
     public void setTiposnumero(String[] tiposnumero) {this.tiposnumero = tiposnumero;}
     public void setNumeroT(String[] numeroT) {this.numeroT = numeroT;}
-    public void setToDelete(boolean toDelete) {this.toDelete = toDelete;}
+    public void setToDelete() {this.toDelete = true;}
     public String getNombre() {return nombre;}
     public String getPrimera() {return primera;}
     public String getSegundoa() {return segundoa;}
@@ -69,11 +67,23 @@ public class Contacto implements Serializable {
         return aux;
     }
     
+    public String toString2(){
+        String tostring;
+        tostring = nombre;
+        String[] numtels = this.getNumeroT();
+        int a = 1;
+        while(a <= 5 && !numtels[a].equals("")){
+            tostring += " " + numtels[a];
+            a++;
+        }
+        return tostring;
+    }
+    
     public boolean equalst(Contacto cmp){
         int a = 1;
         String[] aux = cmp.getNumeroT();
-        while(!numeroT[a].equals("")){
-            for(int i = 1; i<6 ; i++){
+        while(a <= 5 && !numeroT[a].equals("")){
+            for(int i = 1; i<= 5 ; i++){
                 if(aux[i].equals(""))
                     break;
                 if(numeroT[a].equals(aux[i]))
@@ -86,6 +96,10 @@ public class Contacto implements Serializable {
     
     public boolean isGuardable(){
         Contacto[] lista;
+        String[] numeros = this.getNumeroT();
+        if(!this.numerosValidos(numeros)||
+           numeros[1].equals("") || this.getNombre().equals(""))
+            return false;
         if(archivo.exists()){
             lista = (Contacto[]) AdministradorArchivos.leerArchivoSerializable(archivo);
         for(int i = 1; i< 10000;i++){
@@ -94,6 +108,17 @@ public class Contacto implements Serializable {
             if(this.equalst(lista[i]))
                 return false;
         }
+        }
+        return true;
+    }
+    
+    private boolean numerosValidos(String[] numeros){
+        int a =1;
+        while(a<=5 && numeros[a] != null){
+            if(numeros[a].length()  > 10){
+                return false;
+            }
+            a++;
         }
         return true;
     }
@@ -138,6 +163,7 @@ public class Contacto implements Serializable {
                     }
                     b++;
                 }
+          
                 if(noesta){
                     existencias[contador] = contactos[a];
                     contador++;
@@ -156,16 +182,15 @@ public class Contacto implements Serializable {
         return false;
     }
     
-    private static void guardarEnArchivo(Contacto[] contactos){
+    public static void guardarEnArchivo(Contacto[] contactos){
         int a = 1;
         try {
             AdministradorArchivos.LimpiarArchivo(archivo);
         } catch (IOException ex) {}
         while(contactos[a] != null){
-            if(!contactos[a].isToDelete()){
+             if(!contactos[a].isToDelete()){
                 try {
                     AdministradorArchivos.llenarArchivoSerializable(archivo,contactos[a]);
-                    
                 } catch (FileNotFoundException ex){}
                 
             }

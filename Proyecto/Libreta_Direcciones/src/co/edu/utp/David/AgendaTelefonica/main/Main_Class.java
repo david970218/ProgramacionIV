@@ -5,9 +5,11 @@
  */
 package co.edu.utp.David.AgendaTelefonica.main;
 import co.edu.utp.David.AgendaTelefonica.Archivos.AdministradorArchivos;
+import co.edu.utp.David.AgendaTelefonica.Archivos.Filtro;
 import co.edu.utp.David.AgendaTelefonica.Logic.*;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 
 
 
@@ -16,12 +18,18 @@ import java.io.IOException;
  * @author David
  */
 public class Main_Class{
+   
     /**
+     * 
      * @param args the command line arguments
      */
+    public static File jfile(){
+        
+        return null;
+    }
     
     public static void main(String[] args) throws IOException  {
-       //Logica l = new Logica();
+       Logica l = new Logica();
        Contacto d,d1;
        Contacto[] lista;
        lista = new Contacto[30];
@@ -40,7 +48,7 @@ public class Main_Class{
         //Contacto dd = new Contacto(h[1],h[2],h[3]);
         Contacto.guardarListaContacto(lista);
         File in = new File("in.in") , out = new File("out.out");
-       // AdministradorArchivos.importarContactos(Contacto.getArchivo(),in);
+        AdministradorArchivos.importarContactos(Contacto.getArchivo(),in);
         AdministradorArchivos.exportarContactos(Contacto.getArchivo(), out);
     }
 
