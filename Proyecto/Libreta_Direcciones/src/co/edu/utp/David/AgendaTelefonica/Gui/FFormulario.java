@@ -176,7 +176,7 @@ public class FFormulario extends JFrame {
         int select;
         JFileChooser ventana = new JFileChooser();
         File file = null;
-        co.edu.utp.David.AgendaTelefonica.Archivos.Filtro[] filtro = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro[4];
+        Filtro[] filtro = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro[4];
         filtro[1] = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro(".in","Archivos de entrada (*.in)");
         filtro[2] = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro(".out","Archivos de salida (*.out)");
         filtro[3] = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro(".txt","Archivos de texto (*.txt)");
