@@ -5,6 +5,7 @@
  */
 package co.edu.utp.David.AgendaTelefonica.Archivos;
 import co.edu.utp.David.AgendaTelefonica.Logic.Contacto;
+import co.edu.utp.David.AgendaTelefonica.Logic.Logica;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,129 +18,159 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author David
+ * @author David Perez alvarado
+ * Esta es la clase que maneja todo lo correspondiente a archivos 
+ * como es Escritura, Lectura, Formateo de archivos de textos y seriaizables
  */
+
 public class AdministradorArchivos {
-    public static void llenarArchivoSerializable(File archivo , Object c) throws FileNotFoundException{
-        if(archivo.length() == 0)
-        {
+    /**
+     * 
+     * @param archivo se le pasa como parametro un archivo serializable 
+     * para guardar un contacto a la vez
+     * @param c es el contacto a guardar
+     * @throws FileNotFoundException 
+     */
+    
+    public static void llenarArchivoSerializable(File archivo , Object c)
+        throws FileNotFoundException{
+        if(archivo.length() == 0){
             FileOutputStream fos =null;
             ObjectOutputStream  moos = null;
-         try{
-         fos = new FileOutputStream(archivo,true);
-            moos = new ObjectOutputStream(fos);
-            moos.reset();
-            moos.writeUnshared(c);
-            moos.reset();
-            moos.close();
-        } catch (IOException ex) {}
-            
-        }
-        else
-        {
-        FileOutputStream fos = null;
-        MiObjectOutputStream  moos = null;
-        try{
-         fos = new FileOutputStream(archivo,true);
-            moos = new MiObjectOutputStream(fos);
-            moos.reset();
-            moos.writeUnshared(c);
-            moos.reset();
-            moos.close();
-          
-        } catch (IOException ex) {}
-        
+            try{
+                fos = new FileOutputStream(archivo,true);
+                moos = new ObjectOutputStream(fos);
+                moos.reset();
+                moos.writeUnshared(c);
+                moos.reset();
+                moos.close();
+                }catch (IOException ex){}
+        }else{
+            FileOutputStream fos = null;
+            MiObjectOutputStream  moos = null;
+            try{
+                fos = new FileOutputStream(archivo,true);
+                moos = new MiObjectOutputStream(fos);
+                moos.reset();
+                moos.writeUnshared(c);
+                moos.reset();
+                moos.close();
+                }catch (IOException ex) {}
         }
     }
     
- 
+    /**
+     * 
+     * @param archivo recibe un archivo serializable con contactos
+     * @return retornatodos los contactos contenidos en el
+     */
     
     public static Contacto[] leerArchivoSerializable(File archivo){
         FileInputStream fis;
-        Object[] c = new Contacto[10000];
+        Object[] c = new Contacto[Logica.Numero_Contactos];
         Object d;
         ObjectInputStream ois = null;
-        if( archivo.exists() && archivo.length() != 0 ){
-        try{
-            int a = 1;
-            fis = new FileInputStream(archivo);
-            ois = new ObjectInputStream(fis);
-            
-            while(true){
-         
-            d = ois.readObject();
-            c[a] = d;
-
-             a++;
-                
+        if(archivo.exists() && archivo.length() != 0){
+            try{
+                int a = 1;
+                fis = new FileInputStream(archivo);
+                ois = new ObjectInputStream(fis);
+                while(true){
+                    d = ois.readObject();
+                    c[a] = d;
+                    a++;
+                }
+            }catch(FileNotFoundException ex) {} 
+            catch (IOException | ClassNotFoundException ex) {}
+            finally{
+                try {
+                    ois.close();
+                }catch (IOException ex) {}
             }
-            
-        } catch (FileNotFoundException ex) {} 
-          catch (IOException | ClassNotFoundException ex) {}
-        finally{
-            try {
-                ois.close();
-            } catch (IOException ex) {}
-            
-            
-        }
         }
         return (Contacto[])  c;
     }
     
-   public static void LimpiarArchivo(File Archivo) throws FileNotFoundException, IOException{
+    /**
+     * 
+     * @param Archivo recibe el archivo a ser limpiado
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
+    
+    public static void LimpiarArchivo(File Archivo)
+        throws FileNotFoundException, IOException{
         FileOutputStream fos = new FileOutputStream(Archivo);
         fos.close();      
     }
+   
+   /**
+    * 
+    * @param archivo se le pasa un archivo.txt 
+    * para ser llenado con un objeto a la vez
+    * @param c es el onjeto que se va a guardar
+    * pero en formato de texto con la funcion toSring() 
+    */
+   
    public static void llenarArchivoTxt(File archivo, Object c){
        FileWriter fw = null;
        BufferedWriter bw = null;
-        try {
+       try {
             fw = new FileWriter(archivo,true);
             bw = new BufferedWriter(fw);
             bw.write(c.toString());
             bw.newLine();
-        } catch (IOException ex) {
-            Logger.getLogger(AdministradorArchivos.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                bw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(AdministradorArchivos.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       }catch (IOException ex) {}
+       finally {
+                try {
+                    bw.close();
+                 } catch (IOException ex) {}
         }
        
    }
    
+   /**
+    * 
+    * @param archivo archivo que va a ser leido en todo su contenido
+    * @return retorna una cadena de String que cada posicion
+    * guarda una linea de texto que hay en el archivo
+    */
    public static String[] leerArchivoTxt(File archivo) {
        FileReader fr = null;
-       String[] objs = new String[10000];
+       String[] objs = new String[Logica.Numero_Contactos];
        BufferedReader br = null;
        if(archivo.exists() && archivo.length() !=0){
-        try {
-            String aux;
-            int a = 1;
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            while((aux = br.readLine()) != null){
-                objs[a] = aux;
-                a++;
-            }
-        } catch (FileNotFoundException ex) {}catch (IOException ex) {}
-        finally {
             try {
-                br.close();
-            } catch (IOException ex) {}
+                 String aux;
+                 int a = 1;
+                 fr = new FileReader(archivo);
+                 br = new BufferedReader(fr);
+                 while((aux = br.readLine()) != null){
+                     objs[a] = aux;
+                     a++;
+                 }
+             }catch (FileNotFoundException ex) {}catch (IOException ex) {}
+             finally {
+                 try {
+                     br.close();
+                 } catch (IOException ex) {}
+             }
         }
-       }
-   return objs;
+    return objs;
    }
    
+   /**
+    * 
+    * @param serializable es el archivo el cual van a ser 
+    * obtenidos todos los contactos habidos en el para eso se apoya en la funcion de la clase
+    * @AdministradorArchivos  leerArchivoSerializable
+    * @param txt
+    * @return
+    * @throws IOException 
+    */
    public static boolean exportarContactos(File serializable,File txt) throws IOException{
        LimpiarArchivo(txt);
        int contador = 0;

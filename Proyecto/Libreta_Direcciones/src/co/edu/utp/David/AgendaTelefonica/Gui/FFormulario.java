@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
+import co.edu.utp.David.AgendaTelefonica.Gui.Filtro;
 
 /**
  *
@@ -176,15 +177,14 @@ public class FFormulario extends JFrame {
         int select;
         JFileChooser ventana = new JFileChooser();
         File file = null;
-        Filtro[] filtro = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro[4];
-        filtro[1] = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro(".in","Archivos de entrada (*.in)");
-        filtro[2] = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro(".out","Archivos de salida (*.out)");
-        filtro[3] = new co.edu.utp.David.AgendaTelefonica.Archivos.Filtro(".txt","Archivos de texto (*.txt)");
+        Filtro[] filtro = new Filtro[4];
+        filtro[1] = new Filtro(".in","Archivos de entrada (*.in)");
+        filtro[2] = new Filtro(".out","Archivos de salida (*.out)");
+        filtro[3] = new Filtro(".txt","Archivos de texto (*.txt)");
         ventana.setAcceptAllFileFilterUsed(false);
         for (int i = 1; i <= 3; i++) {
             ventana.addChoosableFileFilter(filtro[i]);
         }
-   
         select = ventana.showSaveDialog(ventana);
         if(select == JFileChooser.APPROVE_OPTION){
             file = ventana.getSelectedFile();
@@ -195,7 +195,15 @@ public class FFormulario extends JFrame {
        
      private void exportarContactos() throws IOException{
         panelPestañas.removeAll();
+        Filtro[] filtro = new Filtro[4];
+        filtro[1] = new Filtro(".in","Archivos de entrada (*.in)");
+        filtro[2] = new Filtro(".out","Archivos de salida (*.out)");
+        filtro[3] = new Filtro(".txt","Archivos de texto (*.txt)");
         JFileChooser guardarComo = new JFileChooser();
+        guardarComo.setAcceptAllFileFilterUsed(false);
+         for (int i = 1; i <= 3; i++) {
+             guardarComo.addChoosableFileFilter(filtro[i]);
+         }
         guardarComo.setApproveButtonText("Guardar");
         guardarComo.showSaveDialog(null);
         if(guardarComo.getSelectedFile() != null){

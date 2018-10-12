@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Libreta_Direcciones">
+  <ClassDiagramComponents>
+    <Class name="BusquedaPorNumeroTelefonico" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="telefono"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Logica" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="frame" type="FFormulario" visibility="package"/>
+        <Field name="search" type="BusquedaContactos" visibility="private" isStatic="true"/>
+        <Field name="Numero_Contactos" type="int" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="iniciarPrograma" returnType="void" visibility="public"/>
+        <Method name="setBusqueda" returnType="void" visibility="public" isStatic="true">
+          <Argument type="BusquedaContactos" name="a"/>
+        </Method>
+        <Method name="setActions" returnType="void" visibility="private"/>
+        <Method name="buscar" returnType="Contacto[]" visibility="public" isStatic="true">
+          <Argument type="String" name="busqueda"/>
+        </Method>
+        <Method name="addActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="getSearch" returnType="BusquedaContactos" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="BusquedaPorNombre" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="nombre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusquedaPorDomicilio" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="direccion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusquedaPorAlias" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="alias"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusquedaPorSegundoApellido" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="segundoapellido"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusquedaPorEmail" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="E_mail"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusquedaContactos" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" isAbstract="true" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public" isAbstract="true">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="a"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusquedaPorPrimerApellido" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="listaQueCumpleElRequisito" returnType="Contacto[]" visibility="public">
+          <Argument type="Contacto[]" name="list"/>
+          <Argument type="String" name="primerapellido"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Contacto" package="co.edu.utp.David.AgendaTelefonica.Logic" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="toDelete" type="boolean" visibility="private"/>
+        <Field name="tiposnumero" type="String[]" visibility="private"/>
+        <Field name="archivo" type="File" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String[]" name="args"/>
+          <Argument type="String[]" name="tiposnumero"/>
+          <Argument type="String[]" name="numeroT"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setPrimera" returnType="void" visibility="public">
+          <Argument type="String" name="primera"/>
+        </Method>
+        <Method name="setSegundoa" returnType="void" visibility="public">
+          <Argument type="String" name="segundoa"/>
+        </Method>
+        <Method name="setAlias" returnType="void" visibility="public">
+          <Argument type="String" name="alias"/>
+        </Method>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="setTiposnumero" returnType="void" visibility="public">
+          <Argument type="String[]" name="tiposnumero"/>
+        </Method>
+        <Method name="setNumeroT" returnType="void" visibility="public">
+          <Argument type="String[]" name="numeroT"/>
+        </Method>
+        <Method name="setToDelete" returnType="void" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getPrimera" returnType="String" visibility="public"/>
+        <Method name="getSegundoa" returnType="String" visibility="public"/>
+        <Method name="getAlias" returnType="String" visibility="public"/>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="getTiposnumero" returnType="String[]" visibility="public"/>
+        <Method name="getNumeroT" returnType="String[]" visibility="public"/>
+        <Method name="getArchivo" returnType="File" visibility="public" isStatic="true"/>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="isToDelete" returnType="boolean" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="toString2" returnType="String" visibility="public"/>
+        <Method name="equalst" returnType="boolean" visibility="public">
+          <Argument type="Contacto" name="cmp"/>
+        </Method>
+        <Method name="isGuardable" returnType="boolean" visibility="public"/>
+        <Method name="numerosValidos" returnType="boolean" visibility="private">
+          <Argument type="String[]" name="numeros"/>
+        </Method>
+        <Method name="guardarContacto" returnType="boolean" visibility="public"/>
+        <Method name="contarObjc" returnType="int" visibility="private" isStatic="true">
+          <Argument type="Object[]" name="count"/>
+        </Method>
+        <Method name="guardarListaContacto" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="Contacto[]" name="contactos"/>
+        </Method>
+        <Method name="guardarEnArchivo" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Contacto[]" name="contactos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="mijcombobox" package="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearCBM" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="TablaBusqueda" package="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida" visibility="public" isFinal="true" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="jcb" type="JComboBox" visibility="private" isFinal="true"/>
+        <Field name="jtf" type="JTextField" visibility="private"/>
+        <Field name="busqueda" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setActions" returnType="void" visibility="private"/>
+        <Method name="botonAccionActionPerformed" returnType="void" visibility="private"/>
+        <Method name="jcbActionPerformed" returnType="void" visibility="private"/>
+        <Method name="initGui" returnType="void" visibility="protected"/>
+        <Method name="llenarIam" returnType="void" visibility="protected"/>
+        <Method name="crearPanelBotones" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="MuestraContactos" package="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="iam" type="Contacto[]" visibility="protected"/>
+        <Field name="tabla" type="JTable" visibility="protected"/>
+        <Field name="botonAccion" type="JButton" visibility="protected"/>
+        <Field name="pbotones" type="JPanel" visibility="protected"/>
+        <Field name="numeroDatos" type="int" visibility="protected"/>
+        <Field name="scroll" type="JScrollPane" visibility="protected"/>
+        <Field name="titulos" type="String[]" visibility="protected" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Object" name="c"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="llenarTabla" returnType="String[][]" visibility="protected" isFinal="true"/>
+        <Method name="initGui" returnType="void" visibility="protected"/>
+        <Method name="llenarIam" returnType="void" visibility="protected"/>
+        <Method name="actualizarTabla" returnType="void" visibility="public" isFinal="true"/>
+        <Method name="crearPanelBotones" returnType="void" visibility="private"/>
+        <Method name="getBotonAccion" returnType="JButton" visibility="public"/>
+        <Method name="getSalir" returnType="JButton" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ComboBoxT" package="co.edu.utp.David.AgendaTelefonica.Gui" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="cbm" type="ComboBoxModel" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearCBM" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PFormularioEntrada" package="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="plus" type="JButton" visibility="private"/>
+        <Field name="contadortel" type="int" visibility="package"/>
+        <Field name="cbt" type="ComboBoxT[]" visibility="private"/>
+        <Field name="pbotones" type="PBotonesE" visibility="private"/>
+        <Field name="numerotelefonico" type="JLabel[]" visibility="private" isFinal="true"/>
+        <Field name="numerotelefonicotf" type="JTextField[]" visibility="private" isFinal="true"/>
+        <Field name="nombre" type="JLabel" visibility="private"/>
+        <Field name="nombretf" type="JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getPbotones" returnType="PBotonesE" visibility="public"/>
+        <Method name="getContadortel" returnType="int" visibility="public"/>
+        <Method name="getNumerotelefonicotf" returnType="JTextField[]" visibility="public"/>
+        <Method name="getNombretf" returnType="JTextField" visibility="public"/>
+        <Method name="getPrimerapellidotf" returnType="JTextField" visibility="public"/>
+        <Method name="getSegundoapellidotf" returnType="JTextField" visibility="public"/>
+        <Method name="getCorreoelectronicotf" returnType="JTextField" visibility="public"/>
+        <Method name="getDirecciontf" returnType="JTextField" visibility="public"/>
+        <Method name="getAliastf" returnType="JTextField" visibility="public"/>
+        <Method name="getPlusButton" returnType="JButton" visibility="public"/>
+        <Method name="getJcb" returnType="JComboBox" visibility="public">
+          <Argument type="int" name="a"/>
+        </Method>
+        <Method name="setContadortel" returnType="void" visibility="public"/>
+        <Method name="setContadorOne" returnType="void" visibility="public"/>
+        <Method name="setSelectedItem" returnType="void" visibility="public">
+          <Argument type="String" name="a"/>
+        </Method>
+        <Method name="keyTiped" returnType="void" visibility="private">
+          <Argument type="KeyEvent" name="evt"/>
+        </Method>
+        <Method name="initGui" returnType="void" visibility="private"/>
+        <Method name="cbtActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="evt"/>
+          <Argument type="int" name="aux"/>
+        </Method>
+        <Method name="cbtAction" returnType="void" visibility="private"/>
+        <Method name="setAction" returnType="void" visibility="public"/>
+        <Method name="minusActionPerformed" returnType="void" visibility="protected">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="minusActionPerformedAux" returnType="void" visibility="protected"/>
+        <Method name="limpiarActionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="plusActionPerformed" returnType="void" visibility="protected">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cambiarColor" returnType="void" visibility="private">
+          <Argument type="Component" name="c"/>
+        </Method>
+        <Method name="agregarCampos" returnType="void" visibility="private"/>
+        <Method name="crearCampoTel" returnType="void" visibility="public"/>
+        <Method name="borrarBotones" returnType="void" visibility="public"/>
+        <Method name="colocarBotones" returnType="void" visibility="public"/>
+        <Method name="crearPlus" returnType="void" visibility="private"/>
+        <Method name="crearMinus" returnType="void" visibility="private"/>
+        <Method name="actualizarPantalla" returnType="void" visibility="public"/>
+        <Method name="getPanelBotones" returnType="PBotonesE" visibility="public"/>
+        <Method name="getComponentes" returnType="String[][]" visibility="public"/>
+        <Method name="getCampoTelefonico" returnType="JTextField" visibility="public">
+          <Argument type="int" name="a"/>
+        </Method>
+        <Method name="isContact" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PFormularioEdicion" package="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="listaContactos" type="Contacto[]" visibility="private"/>
+        <Field name="listaTextFields" type="JTextField[]" visibility="private"/>
+        <Field name="jcb" type="JComboBox" visibility="private"/>
+        <Field name="referencia" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initGUI2" returnType="void" visibility="private"/>
+        <Method name="agregarComponentesAdicionales" returnType="void" visibility="private"/>
+        <Method name="llenarjcb" returnType="void" visibility="public"/>
+        <Method name="actualizarListaContactos" returnType="void" visibility="private"/>
+        <Method name="llenarListaComponentes" returnType="void" visibility="private"/>
+        <Method name="actualizarCamposTelefonicos" returnType="void" visibility="private"/>
+        <Method name="setEditable" returnType="void" visibility="private">
+          <Argument type="boolean" name="edit"/>
+        </Method>
+        <Method name="renameButton" returnType="void" visibility="private"/>
+        <Method name="setActions" returnType="void" visibility="private"/>
+        <Method name="editarActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="minusActionPerformed" returnType="void" visibility="protected">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="limpiarActionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="plusActionPerformed" returnType="void" visibility="protected">
+          <Argument type="ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jcbActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="eliminarJtfs" returnType="void" visibility="private"/>
+        <Method name="llenarFormulario" returnType="void" visibility="private">
+          <Argument type="Contacto" name="a"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PBotonesE" package="co.edu.utp.David.AgendaTelefonica.Gui" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="agregar" type="JButton" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initGui" returnType="void" visibility="private"/>
+        <Method name="agregarBoton" returnType="void" visibility="private">
+          <Argument type="JButton" name="b"/>
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setActions" returnType="void" visibility="private"/>
+        <Method name="getSalir" returnType="JButton" visibility="public"/>
+        <Method name="getAgregar" returnType="JButton" visibility="public"/>
+        <Method name="getLimpiar" returnType="JButton" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="FFormulario" package="co.edu.utp.David.AgendaTelefonica.Gui" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="menu" type="Popmenu" visibility="private" isFinal="true"/>
+        <Field name="pformulario" type="PFormularioEntrada" visibility="private" isFinal="true"/>
+        <Field name="scroll" type="JScrollPane" visibility="private"/>
+        <Field name="panelPestañas" type="JTabbedPane" visibility="private" isFinal="true"/>
+        <Field name="mc" type="MuestraContactos" visibility="private" isFinal="true"/>
+        <Field name="pfe" type="PFormularioEdicion" visibility="private" isFinal="true"/>
+        <Field name="tablabusqueda" type="TablaBusqueda" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initGui" returnType="void" visibility="private"/>
+        <Method name="setActions" returnType="void" visibility="private"/>
+        <Method name="agregarContactoActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="editarContactoActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="cerraritemActionPerformed" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="e"/>
+          <Argument type="Component" name="a"/>
+        </Method>
+        <Method name="getPformulario" returnType="PFormularioEntrada" visibility="public"/>
+        <Method name="importarContactos" returnType="void" visibility="private"/>
+        <Method name="exportarContactos" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="Popmenu" package="co.edu.utp.David.AgendaTelefonica.Gui" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="menu" type="JMenu" visibility="public"/>
+        <Field name="agregarContacto" type="JMenuItem" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Filtro" package="co.edu.utp.David.AgendaTelefonica.Gui" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="ext" type="String" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="ext"/>
+          <Argument type="String" name="description"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="accept" returnType="boolean" visibility="public">
+          <Argument type="File" name="f"/>
+        </Method>
+        <Method name="getDescription" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AdministradorArchivos" package="co.edu.utp.David.AgendaTelefonica.Archivos" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="llenarArchivoSerializable" returnType="void" visibility="public" isStatic="true">
+          <Argument type="File" name="archivo"/>
+          <Argument type="Object" name="c"/>
+        </Method>
+        <Method name="leerArchivoSerializable" returnType="Contacto[]" visibility="public" isStatic="true">
+          <Argument type="File" name="archivo"/>
+        </Method>
+        <Method name="LimpiarArchivo" returnType="void" visibility="public" isStatic="true">
+          <Argument type="File" name="Archivo"/>
+        </Method>
+        <Method name="llenarArchivoTxt" returnType="void" visibility="public" isStatic="true">
+          <Argument type="File" name="archivo"/>
+          <Argument type="Object" name="c"/>
+        </Method>
+        <Method name="leerArchivoTxt" returnType="String[]" visibility="public" isStatic="true">
+          <Argument type="File" name="archivo"/>
+        </Method>
+        <Method name="exportarContactos" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="File" name="serializable"/>
+          <Argument type="File" name="txt"/>
+        </Method>
+        <Method name="importarContactos" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="File" name="serializable"/>
+          <Argument type="File" name="txt"/>
+        </Method>
+        <Method name="convertirAStrings" returnType="String[][]" visibility="private" isStatic="true">
+          <Argument type="char[]" name="as"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MiObjectOutputStream" package="co.edu.utp.David.AgendaTelefonica.Archivos" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="OutputStream" name="os"/>
+        </Constructor>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="writeStreamHeader" returnType="void" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="Main_Class" package="co.edu.utp.David.AgendaTelefonica.main" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="jfile" returnType="File" visibility="public" isStatic="true"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida.TablaBusqueda" target="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida.MuestraContactos"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEntrada" target="co.edu.utp.David.AgendaTelefonica.Gui.PBotonesE" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorPrimerApellido" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorAlias" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <HasRelation name="mc" source="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" target="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida.MuestraContactos" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="frame" source="co.edu.utp.David.AgendaTelefonica.Logic.Logica" target="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.Logica" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pfe" source="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" target="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEdicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorNombre" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorDomicilio" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorPrimerApellido" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorSegundoApellido" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorEmail" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <HasRelation name="pformulario" source="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" target="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEntrada" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" target="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEntrada" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEdicion" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pbotones" source="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEntrada" target="co.edu.utp.David.AgendaTelefonica.Gui.PBotonesE" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="search" source="co.edu.utp.David.AgendaTelefonica.Logic.Logica" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorSegundoApellido" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorNumeroTelefonico" target="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaContactos"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorDomicilio" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorNombre" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEdicion" target="co.edu.utp.David.AgendaTelefonica.Gui.FormularioEntrada.PFormularioEntrada"/>
+    <HasRelation name="menu" source="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" target="co.edu.utp.David.AgendaTelefonica.Gui.Popmenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Archivos.AdministradorArchivos" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorNumeroTelefonico" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorAlias" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.AgendaTelefonica.Logic.BusquedaPorEmail" target="co.edu.utp.David.AgendaTelefonica.Logic.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tablabusqueda" source="co.edu.utp.David.AgendaTelefonica.Gui.FFormulario" target="co.edu.utp.David.AgendaTelefonica.Gui.TablasDeSalida.TablaBusqueda" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

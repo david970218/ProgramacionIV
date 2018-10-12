@@ -4,12 +4,9 @@
  * and open the template in the editor.
  */
 package co.edu.utp.David.AgendaTelefonica.main;
-import co.edu.utp.David.AgendaTelefonica.Archivos.AdministradorArchivos;
-import co.edu.utp.David.AgendaTelefonica.Archivos.Filtro;
 import co.edu.utp.David.AgendaTelefonica.Logic.*;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.JFileChooser;
 
 
 

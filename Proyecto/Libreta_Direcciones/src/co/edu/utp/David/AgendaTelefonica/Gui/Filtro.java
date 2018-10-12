@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.utp.David.AgendaTelefonica.Archivos;
+package co.edu.utp.David.AgendaTelefonica.Gui;
 
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
