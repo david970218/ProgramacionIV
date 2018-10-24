@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="SudokuWithObserverPattern">
+  <ClassDiagramComponents>
+    <Class name="Sudoku" package="co.edu.utp.David" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="cells" type="Cell[][]" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setUp" returnType="void" visibility="public">
+          <Argument type="int[][]" name="puzzle"/>
+        </Method>
+        <Method name="getCellValue" returnType="int" visibility="public">
+          <Argument type="int" name="i"/>
+          <Argument type="int" name="j"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cell" package="co.edu.utp.David" visibility="public" xPosition="679.0" yPosition="217.0">
+      <Fields>
+        <Field name="observadores" type="List&lt;Observer&gt;" visibility="private"/>
+        <Field name="Values" type="List" visibility="private"/>
+        <Field name="value" type="Integer" visibility="private"/>
+        <Field name="isSolved" type="boolean" visibility="private"/>
+        <Field name="row" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="row"/>
+          <Argument type="int" name="col"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="Notify" returnType="void" visibility="public">
+          <Argument type="Object" name="a"/>
+        </Method>
+        <Method name="addObserver" returnType="void" visibility="public">
+          <Argument type="Cell[][]" name="cells"/>
+        </Method>
+        <Method name="setValues" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="addObserver" returnType="void" visibility="public">
+          <Argument type="Observer" name="o"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="Object" name="o"/>
+          <Argument type="Observable" name="x"/>
+        </Method>
+        <Method name="getValue" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MainClass" package="co.edu.utp.David" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="Observable" package="co.edu.utp.David" visibility="public" xPosition="296.0" yPosition="-17.0">
+      <Methods>
+        <Method name="Notify" returnType="void" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+        <Method name="addObserver" returnType="void" visibility="public">
+          <Argument type="Observer" name="o"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="Observer" package="co.edu.utp.David" visibility="public" xPosition="617.0" yPosition="-9.0">
+      <Methods>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="Object" name="o"/>
+          <Argument type="Observable" name="x"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="observadores" source="co.edu.utp.David.Cell" target="co.edu.utp.David.Observer" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Observer&gt;"/>
+    <UseRelation source="co.edu.utp.David.Observer" target="co.edu.utp.David.Observable" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.Cell" target="co.edu.utp.David.Observable" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="co.edu.utp.David.Cell" target="co.edu.utp.David.Observable"/>
+    <UseRelation source="co.edu.utp.David.Observable" target="co.edu.utp.David.Observer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.Cell" target="co.edu.utp.David.Cell" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="co.edu.utp.David.Cell" target="co.edu.utp.David.Observer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="co.edu.utp.David.Cell" target="co.edu.utp.David.Observer"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

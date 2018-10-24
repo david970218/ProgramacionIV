@@ -1,0 +1,19 @@
+@startuml
+annotation java.lang.Override
+class co.edu.utp.David.Cell
+class co.edu.utp.David.MainClass
+class co.edu.utp.David.Sudoku
+class java.util.ArrayList
+class java.util.List
+class java.util.Scanner
+interface co.edu.utp.David.Observable
+interface co.edu.utp.David.Observer
+co.edu.utp.David.Cell ..> java.lang.Override
+co.edu.utp.David.Cell ..> co.edu.utp.David.Cell
+co.edu.utp.David.Cell ..> java.util.ArrayList
+co.edu.utp.David.Cell ..> java.util.List
+co.edu.utp.David.Cell --|> co.edu.utp.David.Observable
+co.edu.utp.David.Cell --|> co.edu.utp.David.Observer
+co.edu.utp.David.MainClass ..> java.util.Scanner
+co.edu.utp.David.Sudoku ..> java.lang.Override
+@enduml
