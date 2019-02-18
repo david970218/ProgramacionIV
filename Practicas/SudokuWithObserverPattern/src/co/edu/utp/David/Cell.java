@@ -99,7 +99,11 @@ public class Cell implements Observer,Observable{
         if(Values.contains(a+1)){
             Values.remove(new Integer(a+1));
             return a+1;
-        }
+        }else
+            if(Values.contains(a-1)){
+            Values.remove(new Integer(a-1));
+            return a-1;
+          } 
         else
            return (int) Values.get(0);
     }

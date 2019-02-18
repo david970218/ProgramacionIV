@@ -23,12 +23,11 @@ public class PDibujo extends JPanel implements Observer{
     @Override
     public void paint(Graphics g){
       Juego juego = (Juego)objObservable;
-      g.setColor(Color.red);
+      g.setColor(Color.CYAN);
       g.fillRect(0,0,this.getWidth(),this.getHeight());
         for (Ficha ficha:juego.getFichas()) {
             g.drawImage(ficha.getImagen(),ficha.getX() *90,ficha.getY() *90,90,90, this);
         }
-      
     }
     
     
