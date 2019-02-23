@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/02/2019 01:58:27 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.utp.isc.david.prestamos.persistencia1.Prestamo" table="prestamo"  optimistic-lock="version">
+        <id name="numPrestamo" type="int">
+            <column name="NumPrestamo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="persona" class="co.edu.utp.isc.david.prestamos.persistencia1.Persona" fetch="select">
+            <column name="CC_Solicitante" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="double">
+            <column name="Cantidad" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="fechaDeSolicitud" type="date">
+            <column name="fecha_de_Solicitud" length="10" not-null="true" />
+        </property>
+        <property name="estadoDeAprobacion" type="int">
+            <column name="estadoDeAprobacion" not-null="true" />
+        </property>
+        <property name="fechaDeDevolucion" type="date">
+            <column name="fecha_de_devolucion" length="10" not-null="true" />
+        </property>
+        <property name="valorCuota" type="double">
+            <column name="Valor_Cuota" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cantidadCuotas" type="int">
+            <column name="Cantidad_cuotas" not-null="true" />
+        </property>
+        <property name="cuotasPagadas" type="int">
+            <column name="`Cuotas pagadas`" not-null="true" />
+        </property>
+        <property name="proximaCuota" type="date">
+            <column name="Proxima_Cuota" length="10" not-null="true" />
+        </property>
+        <property name="fechaEntrega" type="date">
+            <column name="Fecha_Entrega" length="10" not-null="true" />
+        </property>
+        <property name="saldoPendiente" type="double">
+            <column name="Saldo_Pendiente" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/02/2019 01:58:27 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.utp.isc.david.prestamos.persistencia1.Persona" table="persona"  optimistic-lock="version">
+        <id name="cedula" type="int">
+            <column name="cedula" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" not-null="true" />
+        </property>
+        <property name="primerapellido" type="string">
+            <column name="primerapellido" length="20" not-null="true" />
+        </property>
+        <property name="segundoapellido" type="string">
+            <column name="segundoapellido" length="20" not-null="true" />
+        </property>
+        <property name="telefonoCasa" type="string">
+            <column name="telefonoCasa" length="20" />
+        </property>
+        <property name="telefonoMovil" type="string">
+            <column name="telefonoMovil" length="20" not-null="true" />
+        </property>
+        <set name="prestamos" table="prestamo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CC_Solicitante" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.utp.isc.david.prestamos.persistencia1.Prestamo" />
+        </set>
+    </class>
+</hibernate-mapping>
